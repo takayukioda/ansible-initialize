@@ -1,0 +1,21 @@
+- name: Set temporary file path
+  set_fact:
+    download_path: /tmp/sublime3.deb
+- name: Check the version of sublime text 3
+  command: subl --version
+  register: version
+  failed_when: false
+  changed_when: version.rc != 0
+- name: Download sublime text 3 .deb file
+  when: version | changed
+  get_url:
+    url: http://c758482.r82.cf2.rackcdn.com/sublime-text_{{ sublime_version }}_amd64.deb
+    dest: "{{ download_path }}"
+- name: Install sublime text 3 from .deb file
+  when: version | changed
+  apt:
+    deb: "{{ download_path }}"
+- name: Upgrade sublime text 3 to latest through apt
+  apt:
+    pkg: atom
+    state: latest
