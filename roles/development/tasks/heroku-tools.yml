@@ -1,0 +1,20 @@
+- name: Check version for heroku toolbelt
+  sudo: no
+  command: heroku --version
+  register: version
+  failed_when: false
+  changed_when: version.rc != 0
+- name: Install heroku toolbelt through script
+  when: version | changed
+  shell: wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+- name: Update heroku to latest by apt
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - heroku
+    - heroku-toolbelt
+- name: Update plugins by running heroku command
+  sudo: no
+  command: heroku --version
+  changed_when: false
