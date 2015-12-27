@@ -1,0 +1,21 @@
+- name: Set temporary file path
+  set_fact:
+    download_path: /tmp/atom.deb
+- name: Check the version of atom
+  command: atom --version
+  register: version
+  failed_when: false
+  changed_when: version.rc != 0
+- name: Download atom .deb file
+  when: version | changed
+  get_url:
+    url: https://atom.io/download/deb
+    dest: "{{ download_path }}"
+- name: Install atom from .deb file
+  when: version | changed
+  apt:
+    deb: "{{ download_path }}"
+- name: Upgrade atom to latest through apt
+  apt:
+    pkg: atom
+    state: latest
