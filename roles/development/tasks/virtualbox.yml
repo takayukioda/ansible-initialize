@@ -1,3 +1,6 @@
+- name: Set variables
+  set_fact:
+    virtualbox_path: ~/virtualbox
 - name: Add virtualbox sources.list file
   template:
     dest: /etc/apt/sources.list.d/virtualbox.list
@@ -15,6 +18,14 @@
   apt:
     pkg: virtualbox-5.0
     state: latest
+- name: Make directory for virtualbox
+  file:
+    name: "{{ virtualbox_path }}"
+    owner: "{{ ansible_user_id }}"
+    state: directory
+- name: Set machine folder
+  command: vboxmanage setproperty machinefolder "{{ virtualbox_path }}"
+  changed_when: false
 - name: Add user to virtualbox group
   user:
     name: "{{ ansible_user_id }}"
