@@ -1,0 +1,17 @@
+- name: Set temporary file path
+  set_fact:
+    download_path: /tmp/dropbox.deb
+- name: Check if dropbox command exists
+  command: dropbox help
+  register: version
+  failed_when: false
+  changed_when: version.rc != 0
+- name: Download dropbox .deb file
+  when: version | changed
+  get_url:
+    url: https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+    dest: "{{ download_path }}"
+- name: Install dropbox from .deb file
+  when: version | changed
+  apt:
+    deb: "{{ download_path }}"
