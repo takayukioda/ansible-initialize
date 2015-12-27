@@ -19,11 +19,13 @@
     pkg: virtualbox-5.0
     state: latest
 - name: Make directory for virtualbox
+  sudo: no
   file:
     name: "{{ virtualbox_path }}"
     owner: "{{ ansible_user_id }}"
     state: directory
 - name: Set machine folder
+  sudo: no
   command: vboxmanage setproperty machinefolder "{{ virtualbox_path }}"
   changed_when: false
 - name: Add user to virtualbox group

@@ -2,6 +2,7 @@
   set_fact:
     download_path: /tmp/vagrant.deb
 - name: Check vagrant version
+  sudo: no
   command: vagrant --version
   register: version
   failed_when: false
@@ -9,7 +10,7 @@
 - name: Download vagrant .deb file
   when: version | changed
   get_url:
-    url:  https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb
+    url: https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb
     dest: "{{ download_path }}"
     sha256sum: "{{ vagrant_sha256sum }}"
 - name: Install vagrant from .deb file
@@ -21,6 +22,7 @@
     pkg: vagrant
     state: latest
 - name: Make directory for vagrant files
+  sudo: no
   file:
     name: ~/vagrant
     owner: "{{ ansible_user_id }}"
