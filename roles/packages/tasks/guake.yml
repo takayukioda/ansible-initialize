@@ -1,0 +1,4 @@
+- name: Install guake terminal
+  apt:
+    pkg: guake
+    state: latest

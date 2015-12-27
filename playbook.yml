@@ -1,0 +1,7 @@
+- name: Initialize your own PC
+  hosts: all
+  roles:
+    - role: packages
+      sudo: yes
+    - role: development
+      sudo: yes

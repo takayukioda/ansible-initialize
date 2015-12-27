@@ -1,0 +1,14 @@
+- name: Update language packs
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - language-pack-en
+    - language-pack-ja
+- name: Update locale
+  command: update-locale LANG=en_US.UTF-8 
+  changed_when: false
+- name: Install ibus mozc
+  apt:
+    pkg: ibus-mozc
+    state: latest

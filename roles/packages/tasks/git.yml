@@ -1,0 +1,8 @@
+- name: Add ppa for latest git
+  apt_repository:
+    repo: "ppa:git-core/ppa"
+- include: update.yml
+- name: Install git
+  apt:
+    pkg: git
+    state: latest

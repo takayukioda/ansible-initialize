@@ -1,0 +1,12 @@
+- name: Set temporary file path
+  set_fact:
+    download_path: /tmp/vagrant.deb
+- name: Download vagrant .deb file
+  get_url:
+    url:  https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb
+    dest: "{{ download_path }}"
+    sha256sum: "{{ vagrant_sha256sum }}"
+- name: Install vagrant from .deb file
+  apt:
+    deb: "{{ download_path }}"
+  

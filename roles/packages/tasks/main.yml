@@ -1,0 +1,10 @@
+- include: update.yml
+- include: language.yml
+- include: aptitude.yml
+- include: ansible.yml
+- include: git.yml
+- include: vim.yml
+- include: tmux.yml
+- include: gui-related.yml
+- include: guake.yml
+- include: upgrade.yml

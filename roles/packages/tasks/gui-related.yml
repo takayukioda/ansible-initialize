@@ -1,0 +1,15 @@
+- name: Add ppa for numix themes
+  apt_repository:
+    repo: "ppa:numix/ppa"
+- include: update.yml
+- name: Install Numix Themes
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - numix-gtk-theme
+    - numix-icon-theme-circle
+- name: Install tweak tool
+  apt:
+    pkg: unity-tweak-tool
+    state: latest

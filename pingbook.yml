@@ -1,0 +1,6 @@
+- name: "Ping"
+  hosts: all
+  sudo: no
+  tasks: 
+    - name: "Who am I?"
+      command: whoami

@@ -1,0 +1,22 @@
+- name: Add virtualbox sources.list file
+  template:
+    dest: /etc/apt/sources.list.d/virtualbox.list
+    src: virtualbox.list.j2
+- name: Get apt key from server
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox.asc
+    state: present
+- include: update.yml
+- name: Install dkms before installation
+  apt:
+    pkg: dkms
+    state: latest
+- name: Install latest virtualbox
+  apt:
+    pkg: virtualbox-5.0
+    state: latest
+- name: Add user to virtualbox group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: vboxusers
+    append: yes
