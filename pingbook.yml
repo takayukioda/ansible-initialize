@@ -2,5 +2,6 @@
   hosts: all
   sudo: no
   tasks: 
-    - name: "Who am I?"
-      command: whoami
+    - name: ansible user id
+      debug:
+        var: ansible_user_id
