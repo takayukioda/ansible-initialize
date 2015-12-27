@@ -6,3 +6,6 @@
   vars:
     vagrant_version: 1.8.1
     vagrant_sha256sum: ed0e1ae0f35aecd47e0b3dfb486a230984a08ceda3b371486add4d42714a693d
+- include: slack-desktop.yml
+  vars:
+    slack_version: 1.2.6

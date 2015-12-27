@@ -1,0 +1,21 @@
+- name: Set temporary file path
+  set_fact:
+    download_path: /tmp/slack.deb
+- name: Check slack version
+  command: slack --version
+  register: version
+  failed_when: false
+  changed_when: version.rc != 0
+- name: Download slack-desktop .deb file
+  when: version | changed
+  get_url:
+    url: https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-{{ slack_version }}-amd64.deb
+    dest: "{{ download_path }}"
+- name: Install slack-desktop from .deb file
+  when: version | changed
+  apt:
+    deb: "{{ download_path }}"
+- name: Update slack-desktop to latest by apt
+  apt:
+    pkg: slack-desktop
+    state: latest
