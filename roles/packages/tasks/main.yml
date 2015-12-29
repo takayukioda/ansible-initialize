@@ -5,6 +5,8 @@
 - include: git.yml
 - include: vim.yml
 - include: tmux.yml
+- include: curl.yml
+- include: wget.yml
 - include: themes.yml
 - include: guake.yml
 - include: shutter.yml
