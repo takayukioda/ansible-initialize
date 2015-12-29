@@ -1,0 +1,19 @@
+- name: Install clang related packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - clang-{{ llvm_version }}
+    - clang-format-{{ llvm_version }}
+    - clang-modernize-{{ llvm_version }}
+    - libclang1-{{ llvm_version }}
+    - libclang1-{{ llvm_version }}-dbg
+    - libclang-{{ llvm_version }}-dev
+    - libclang-common-{{ llvm_version }}-dev
+    - libllvm{{ llvm_version }}
+    - libllvm{{ llvm_version }}-dbg
+    - lldb-{{ llvm_version }}
+    - lldb-{{ llvm_version }}-dev
+    - llvm-{{ llvm_version }}
+    - llvm-{{ llvm_version }}-dev
+    - llvm-{{ llvm_version }}-runtime

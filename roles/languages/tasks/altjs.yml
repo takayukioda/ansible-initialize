@@ -1,0 +1,8 @@
+- name: Install altjs
+  npm:
+    name: "{{ item.name }}"
+    global: "{{ item.global }}"
+  with_items:
+    - { name: typescript, global: yes }
+    - { name: coffee-script, global: yes }
+    - { name: babel-cli, global: yes }

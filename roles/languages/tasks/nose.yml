@@ -1,0 +1,7 @@
+- name: Set pip version to install
+  set_fact:
+    pip: pip{{ python_version }}
+- name: Install nose
+  pip:
+    name: nose
+    executable: "{{ pip }}"

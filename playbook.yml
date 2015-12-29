@@ -5,3 +5,5 @@
       sudo: yes
     - role: development
       sudo: yes
+    - role: languages
+      sudo: yes

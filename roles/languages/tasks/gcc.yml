@@ -1,0 +1,4 @@
+- name: Install gcc 5.x
+  apt:
+    pkg: gcc-5
+    state: latest

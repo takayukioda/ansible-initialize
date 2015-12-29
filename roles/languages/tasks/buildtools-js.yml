@@ -1,0 +1,9 @@
+- name: Install build tools
+  npm:
+    name: "{{ item.name }}"
+    global: "{{ item.global }}"
+  with_items:
+    - { name: grunt-cli, global: yes }
+    - { name: gulp, global: yes }
+    - { name: yo, global: yes }
+    - { name: webpack, global: yes}

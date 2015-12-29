@@ -1,0 +1,18 @@
+- name: Where is node?
+  command: which node
+  register: which
+  failed_when: which.rc not in [0, 1]
+  changed_when: which.rc in [1]
+- name: Download node package
+  when: which | changed
+  shell: curl -sL https://deb.nodesource.com/setup_{{ node_version }} | bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+- include: update.yml
+- name: Install Nodejs
+  apt:
+    pkg: nodejs
+    state: latest
+- include: buildtools-js.yml
+- include: altjs.yml
+- include: testframeworks-js.yml

@@ -1,0 +1,9 @@
+- name: Install altjs
+  npm:
+    name: "{{ item.name }}"
+    global: "{{ item.global }}"
+  with_items:
+    - { name: mocha, global: yes }
+    - { name: karma, global: yes }
+    - { name: jasmine, global: yes }
+

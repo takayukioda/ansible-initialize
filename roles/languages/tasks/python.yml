@@ -1,0 +1,17 @@
+- name: Set prefix for 2.x
+  when: python_version == 2
+  set_fact:
+    python: python
+- name: Set prefix for 3.x
+  when: python_version == 3
+  set_fact:
+    python: python3
+- name: Install Python {{ python_version }}.x
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - "{{ python }}-all-dev"
+    - "{{ python }}-setuptools"
+    - "{{ python }}-pip"
+- include: nose.yml

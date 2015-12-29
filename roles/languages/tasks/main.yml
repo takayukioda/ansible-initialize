@@ -1,0 +1,13 @@
+- include: clang.yml
+  vars:
+    llvm_version: 3.7
+- include: gcc.yml
+- include: python.yml
+  vars:
+    python_version: 2
+- include: python.yml
+  vars:
+    python_version: 3
+- include: nodejs.yml
+  vars:
+    node_version: 4.x
