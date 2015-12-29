@@ -7,4 +7,5 @@
 - include: tmux.yml
 - include: themes.yml
 - include: guake.yml
+- include: shutter.yml
 - include: upgrade.yml
