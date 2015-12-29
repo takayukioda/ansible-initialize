@@ -14,7 +14,8 @@
   with_items:
     - heroku
     - heroku-toolbelt
-- name: Update plugins by running heroku command
+- name: Update plugins by running heroku command (only first time)
+  when: version | changed
   sudo: no
   command: heroku --version
   changed_when: false
