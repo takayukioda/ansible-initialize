@@ -5,6 +5,6 @@
 - include: git.yml
 - include: vim.yml
 - include: tmux.yml
-- include: gui-related.yml
+- include: themes.yml
 - include: guake.yml
 - include: upgrade.yml
