@@ -1,0 +1,4 @@
+- name: Install cifs util to enable mount.cifs
+  apt:
+    pkg: cifs-utils
+    state: latest

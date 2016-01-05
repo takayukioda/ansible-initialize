@@ -1,0 +1,4 @@
+- name: Install OpenSSH server
+  apt:
+    pkg: openssh-server
+    state: latest

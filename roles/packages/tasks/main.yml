@@ -10,4 +10,6 @@
 - include: themes.yml
 - include: guake.yml
 - include: shutter.yml
+- include: ssh.yml
+- include: cifs-utils.yml
 - include: upgrade.yml
