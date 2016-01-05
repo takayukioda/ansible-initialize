@@ -7,6 +7,10 @@
   vars:
     vagrant_version: 1.8.1
     vagrant_sha256sum: ed0e1ae0f35aecd47e0b3dfb486a230984a08ceda3b371486add4d42714a693d
+- include: packer.yml
+  vars:
+    packer_version: 0.8.6
+    packer_sha256sum: 2f1ca794e51de831ace30792ab0886aca516bf6b407f6027e816ba7ca79703b5
 - include: heroku-tools.yml
 # GUI tools
 - include: slack-desktop.yml
