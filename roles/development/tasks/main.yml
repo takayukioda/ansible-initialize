@@ -17,3 +17,4 @@
   vars:
     sublime_version: build-3083
 - include: atom.yml
+- include: debconf.yml

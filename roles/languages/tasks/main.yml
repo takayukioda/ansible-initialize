@@ -11,3 +11,8 @@
 - include: nodejs.yml
   vars:
     node_version: 4.x
+- include: java.yml
+- include: scala.yml
+  vars:
+    scala_version: 2.11.7
+    sbt_version: 0.13.9

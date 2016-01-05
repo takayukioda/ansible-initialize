@@ -1,0 +1,34 @@
+- name: Set facts
+  set_fact:
+    sbt_install_dir: /opt/sbt
+- name: Create install directory for sbt
+  file:
+    path: "{{ sbt_install_dir }}"
+    state: directory
+- name: Verify sbt existance
+  command: sbt about
+  register: verify_sbt
+  failed_when: false
+  changed_when: verify_sbt.rc != 0
+- name: Download sbt v{{ sbt_version }}
+  when: verify_sbt | changed
+  get_url:
+    url: "https://dl.bintray.com/sbt/native-packages/sbt/{{ sbt_version }}/sbt-{{ sbt_version }}.tgz"
+    dest: /tmp/sbt.tgz
+- name: Unarchive sbt
+  when: verify_sbt | changed
+  unarchive:
+    copy: no
+    src: /tmp/sbt.tgz
+    dest: "{{ sbt_install_dir }}"
+- name: Add version to directory
+  command: mv {{ sbt_install_dir }}/sbt {{ sbt_install_dir }}/sbt-{{ sbt_version }}
+  args:
+    creates: "{{ sbt_install_dir }}/sbt-{{ sbt_version }}"
+- name: Link sbt to bin
+  file:
+    state: link
+    src: "{{ sbt_install_dir }}/sbt-{{ sbt_version }}/bin/{{ item }}"
+    dest: /usr/local/bin/{{ item }}
+  with_items:
+    - sbt

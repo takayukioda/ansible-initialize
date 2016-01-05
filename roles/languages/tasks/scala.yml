@@ -1,0 +1,36 @@
+- name: Set facts
+  set_fact:
+    scala_install_dir: /opt/scala
+    sbt_install_dir: /opt/sbt
+- name: Create install directory for scala
+  file:
+    path: "{{ scala_install_dir }}"
+    state: directory
+- name: Verify scala existance
+  command: scala -version
+  register: verify_scala
+  failed_when: false
+  changed_when: verify_scala.rc != 0
+- name: Download scala v{{ scala_version }}
+  when: verify_scala | changed
+  get_url:
+    url: http://www.scala-lang.org/files/archive/scala-{{ scala_version }}.tgz
+    dest: /tmp/scala.tgz
+- name: Unarchive scala
+  when: verify_scala | changed
+  unarchive:
+    copy: no
+    src: /tmp/scala.tgz
+    dest: "{{ scala_install_dir }}"
+- name: Link scala commands
+  file:
+    state: link
+    src: "{{ scala_install_dir }}/scala-{{ scala_version }}/bin/{{ item }}"
+    dest: /usr/local/bin/{{ item }}
+  with_items:
+    - scala
+    - scalac
+    - scaladoc
+    - scalap
+    - fsc
+- include: sbt.yml

@@ -1,0 +1,4 @@
+- name: Install debconf
+  apt:
+    pkg: debconf-utils
+    state: latest
