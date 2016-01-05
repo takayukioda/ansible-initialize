@@ -1,0 +1,4 @@
+- name: Install byzanz
+  apt:
+    pkg: byzanz
+    state: latest
