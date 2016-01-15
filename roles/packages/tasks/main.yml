@@ -8,9 +8,10 @@
 - include: tmux.yml
 - include: curl.yml
 - include: wget.yml
-- include: themes.yml
-- include: guake.yml
-- include: shutter.yml
 - include: ssh.yml
 - include: cifs-utils.yml
+- include: guake.yml
+- include: shutter.yml
+- include: themes.yml
+- include: gimp.yml
 - include: upgrade.yml
