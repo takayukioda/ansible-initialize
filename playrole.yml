@@ -2,4 +2,5 @@
   hosts: all
   roles:
     - role: "{{ role }}"
-      sudo: "{{ sudo | default(no) }}"
+      become: "{{ become | default(no) }}"
+      become_method: sudo

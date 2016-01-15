@@ -1,5 +1,5 @@
 - name: Install aptitude
-  sudo: yes
+  become: yes
   apt:
     pkg: aptitude
     state: latest

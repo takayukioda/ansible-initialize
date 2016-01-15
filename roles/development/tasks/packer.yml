@@ -7,7 +7,7 @@
     name: "{{ install_path }}"
     state: directory
 - name: Check packer version
-  sudo: no
+  become: no
   command: packer version
   register: version
   failed_when: false

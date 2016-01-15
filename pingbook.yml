@@ -1,6 +1,7 @@
 - name: "Ping"
   hosts: all
-  sudo: no
+  become: no
+  become_method: sudo
   tasks: 
     - name: ansible user id
       debug:

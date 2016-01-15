@@ -2,7 +2,7 @@
   set_fact:
     download_path: /tmp/vagrant.deb
 - name: Check vagrant version
-  sudo: no
+  become: no
   command: vagrant --version
   register: version
   failed_when: false
@@ -22,7 +22,7 @@
     pkg: vagrant
     state: latest
 - name: Make directory for vagrant files
-  sudo: no
+  become: no
   file:
     name: ~/vagrant
     owner: "{{ ansible_user_id }}"

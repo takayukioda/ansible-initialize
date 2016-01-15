@@ -1,5 +1,5 @@
 - name: Check version for heroku toolbelt
-  sudo: no
+  become: no
   command: heroku --version
   register: version
   failed_when: false
@@ -16,6 +16,6 @@
     - heroku-toolbelt
 - name: Update plugins by running heroku command (only first time)
   when: version | changed
-  sudo: no
+  become: no
   command: heroku --version
   changed_when: false

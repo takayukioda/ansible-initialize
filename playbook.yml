@@ -2,8 +2,11 @@
   hosts: all
   roles:
     - role: packages
-      sudo: yes
+      become: yes
+      become_method: sudo
     - role: development
-      sudo: yes
+      become: yes
+      become_method: sudo
     - role: languages
-      sudo: yes
+      become: yes
+      become_method: sudo
