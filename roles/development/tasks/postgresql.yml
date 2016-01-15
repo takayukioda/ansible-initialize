@@ -1,0 +1,8 @@
+- name: Install psql client
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - postgresql-9.4
+    - postgresql-client-common
+    - postgresql-client-9.4
