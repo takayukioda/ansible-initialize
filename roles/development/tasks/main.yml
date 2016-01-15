@@ -2,6 +2,7 @@
 - include: dev-tools.yml
 # CLI tools
 - include: nfs.yml
+- include: nmap.yml
 - include: docker.yml
 - include: virtualbox.yml
 - include: vagrant.yml
