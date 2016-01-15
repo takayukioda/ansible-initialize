@@ -1,0 +1,5 @@
+- name: Install ibus mozc
+  apt:
+    pkg: ibus-mozc
+    state: latest
+

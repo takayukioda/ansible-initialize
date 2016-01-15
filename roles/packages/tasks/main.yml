@@ -1,5 +1,6 @@
 - include: update.yml
-- include: language.yml
+- include: locale.yml
+- include: ibus.yml
 - include: aptitude.yml
 - include: ansible.yml
 - include: git.yml
