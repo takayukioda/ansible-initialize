@@ -1,0 +1,8 @@
+- name: Install nfs related packages
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - nfs-client
+    - nfs-server
+      # - nfs-kernel-server
