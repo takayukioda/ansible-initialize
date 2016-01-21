@@ -14,6 +14,5 @@
     - oracle-java8-installer
     - ca-certificates
     - oracle-java8-set-default
-- name: Install maven
-  apt:
-    pkg: maven
+- include: maven.yml
+- include: gradle.yml

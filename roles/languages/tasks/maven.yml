@@ -1,0 +1,5 @@
+- name: Install maven
+  apt:
+    pkg: maven
+    state: latest
+
