@@ -16,3 +16,4 @@
   vars:
     scala_version: 2.11.7
     sbt_version: 0.13.9
+- include: php5.yml

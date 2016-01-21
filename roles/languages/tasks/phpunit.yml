@@ -1,0 +1,6 @@
+- name: Download and install phpunit
+  get_url:
+    url: https://phar.phpunit.de/phpunit.phar
+    dest: /usr/local/bin/phpunit
+    mode: 0755
+
