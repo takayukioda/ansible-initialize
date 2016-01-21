@@ -3,4 +3,3 @@
   roles:
     - role: "{{ role }}"
       become: "{{ become | default(no) }}"
-      become_method: sudo

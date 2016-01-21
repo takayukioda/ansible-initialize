@@ -4,4 +4,3 @@
     - name: include {{ task }}
       include: "{{ task }}"
       become: "{{ become | default(no) }}"
-      become_method: sudo
