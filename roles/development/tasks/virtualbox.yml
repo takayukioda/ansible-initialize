@@ -23,6 +23,7 @@
   file:
     name: "{{ virtualbox_path }}"
     owner: "{{ ansible_user_id }}"
+    mode: 0755
     state: directory
 - name: Set machine folder
   become: no
