@@ -17,6 +17,7 @@
 
 # Database
 - include: postgresql.yml
+- include: sqlite3.yml
 
 # GUI tools
 - include: slack-desktop.yml
